@@ -16,9 +16,9 @@ export class CourseInfoComponent implements OnInit {
 
     course!: Course;
 
-    saveFlag: ReturnObj = {success: undefined, message: ""};
-    
-    constructor(private activedRoute: ActivatedRoute, private courseService: CourseService) {}
+    saveFlag: ReturnObj = { success: undefined, message: "" };
+
+    constructor(private activedRoute: ActivatedRoute, private courseService: CourseService) { }
 
     ngOnInit(): void {
         let id = this.activedRoute.snapshot.paramMap.get("id");
@@ -30,10 +30,9 @@ export class CourseInfoComponent implements OnInit {
     }
 
     save(): void {
-        if (this.courseService.save(this.course)) {
-            this.saveFlag = {success: true, message: "Course saved successfully!"}
-        } else {
-            this.saveFlag = {success: false, message: "Error on saving course!"}
-        }
+        this.courseService.save(this.course).subscribe({
+            next: course => this.saveFlag = { success: true, message: "Course saved successfully!" },
+            error: err => this.saveFlag = { success: false, message: err.message }
+        });
     }
 }
