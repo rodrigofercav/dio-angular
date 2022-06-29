@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dio-angular-course-manager": {
+    "frontend-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dio-angular-course-manager",
+            "outputPath": "dist/frontend-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dio-angular-course-manager:build:production"
+              "browserTarget": "frontend-angular:build:production"
             },
             "development": {
-              "browserTarget": "dio-angular-course-manager:build:development"
+              "browserTarget": "frontend-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dio-angular-course-manager:build"
+            "browserTarget": "frontend-angular:build"
           }
         },
         "test": {
