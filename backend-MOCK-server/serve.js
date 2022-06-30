@@ -50,9 +50,10 @@ app.route('/api/courses/:id').get((request, response) => {
 
 app.route('/api/courses/:id').delete((request, response)=> {
   const courseId = +request.params['id'];
+  const courseDeleted = COURSES.find(courseIterator => courseIterator.id === courseId);  
   COURSES = COURSES.filter(courseIterator => courseIterator.id !== courseId);
-  
-  response.status(204).send({});
+
+  response.status(200).send(courseDeleted);
 });
 
 var COURSES = [
