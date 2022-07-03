@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { SuccessFlag } from "../utils/app.types";
+import { SuccessFlag } from "../shared/type/app.type";
 import { Course } from "./course";
 import { CourseService } from "./course.service";
 
