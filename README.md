@@ -4,3 +4,9 @@
  
 ### This is an simple application to manage courses, but that is very useful to introduce many Angular basic/mid concepts.
 
+# 
+## `UPDATE:`
+#### Custom features by myself after course finished:
+ - ###### I changed some visual/formatting features
+ - ###### I added `Success or Error` messages on forms pages.
+ - ###### I added `Create Course` functionality on `Course List` page.
