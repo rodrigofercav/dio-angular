@@ -1,11 +1,15 @@
 <h2>Courses List</h2>
-<br/>
-
+<br>
 <div class="form-group row">
-    <h5 class="col-sm-2 col-from-label" style="line-height: 35px;">Filter By:</h5>
-    <div class="col-sm-4" >
-        <input [(ngModel)]="filter" type="text" class="form-control">
-        <br/>
+    <div class="col-sm-6">
+        <button routerLink="/courses/add" class="col-sm-4 btn btn-primary" style="margin-right: 10px;">Add Course</button>
+    </div>
+    <div class="col-sm-6 row">
+        <h5 class="col-sm-4 col-from-label" style="line-height: 35px;">Filter By:</h5>
+        <div class="col-sm-8">
+            <input [(ngModel)]="filter" type="text" class="form-control">
+            <br>
+        </div>
     </div>
 </div>
 
@@ -18,16 +22,17 @@
             <th>Price</th>
             <th>Code</th>
             <th>Duration</th>
-            <th>Rating</th>
             <th>Release Date</th>
-            <th>Actions</th>
+            <th>Rating</th>
+            <th style="text-align: center;">Actions</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let course of filteredCourses">
             <!-- <td>{{course.id}}</td> -->
             <td>
-                <img style="width: 32px; height: 32px; margin-right: 5px;" [src]="course.imageUrl" title="{{ course.name }}">
+                <img style="width: 32px; height: 32px; margin-right: 5px;" [src]="course.imageUrl"
+                    title="{{ course.name }}">
                 {{course.name}}
             </td>
             <!-- <td>
@@ -36,15 +41,22 @@
             <td>{{course.price}}</td>
             <td>{{course.code | lowercase | replace: "-" : "#" }}</td>
             <td>{{course.duration}}</td>
+            <td>{{course.releaseDate | date: 'dd/MM/yyy' }}</td>
             <td>
                 <app-star [rating]="course.rating"></app-star>
             </td>
-            <td>{{course.releaseDate | date: 'dd/MM/yyy' }}</td>
-            <td>
-                <a [routerLink]="['/courses/info/', course.id]" style="text-decoration: none;" title="Course Complete Info"><i class="fa fa-align-justify"></i></a>
+            <td style="text-align: center;">
+                <a [routerLink]="['/courses/info/', course.id]" style="color: black; text-decoration: none;"
+                    title="See complete information or edit this course"><i class="fa fa-bars"></i></a>
                 <span> | </span>
-                <span class="fa fa-trash"></span>
+                <a (click)="delete(course.id)" style="text-decoration: none; cursor: pointer;"
+                    title="Delete this course"><span class="fa fa-trash"></span></a>
             </td>
         </tr>
     </tbody>
 </table>
+
+<div [hidden]="successFlag.success === undefined ? true : false"
+    [ngClass]="successFlag.success ? 'alert-success' : 'alert-danger'" class="alert" role="alert">
+    {{ successFlag.message }}
+</div>
